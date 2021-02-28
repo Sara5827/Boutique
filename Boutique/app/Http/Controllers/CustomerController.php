@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::orderBy('id', 'desc')->get();
+        return response()->json($customers);
     }
 
     /**
@@ -34,9 +36,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->email = $request->email;
+        $customer->save();
+        return response()->json($customer);
     }
-
     /**
      * Display the specified resource.
      *
@@ -45,7 +51,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return response()->json($customer);
     }
 
     /**
@@ -68,7 +75,12 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->email = $request->email;
+        $customer->save();
+        return response()->json($request);
     }
 
     /**
@@ -79,6 +91,8 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+        return response()->json($customer);
     }
 }
