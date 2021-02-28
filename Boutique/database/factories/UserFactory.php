@@ -28,11 +28,10 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Customer::class, function (Faker $faker) {
+$factory->define(App\Customer::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
-       
+        'email' => $faker->unique()->safeEmail
     ];
 });
