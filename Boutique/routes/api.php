@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::delete('/testdelete/{id}', 'CustomerController@destroy');
 Route::resource('customers', 'CustomerController')->except(['create', 'edit']);
+
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');

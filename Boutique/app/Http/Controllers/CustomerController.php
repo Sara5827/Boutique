@@ -37,9 +37,10 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customer = new Customer;
-        $customer->first_name = $request->first_name;
-        $customer->last_name = $request->last_name;
-        $customer->email = $request->email;
+        $customer->title = $request->title;
+        $customer->description = $request->description;
+        $customer->image = $request->image;
+        $customer->prix = $request->prix;
         $customer->save();
         return response()->json($customer);
     }
@@ -92,6 +93,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
+        // dd('hello');
         $customer = Customer::findOrFail($id);
         $customer->delete();
         return response()->json($customer);
