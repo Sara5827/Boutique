@@ -30,8 +30,9 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(App\Customer::class, function (Faker $faker) {
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail
+        'title' => $faker->word,
+        'description' => $faker->paragraph,
+        'image' => $faker->image('public',640,480, null, false),
+        'prix' => $faker->randomFloat(2, 0, 10000),
     ];
 });

@@ -76,10 +76,11 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $customer = Customer::findOrFail($id);
-        $customer->first_name = $request->first_name;
-        $customer->last_name = $request->last_name;
-        $customer->email = $request->email;
-        $customer->save();
+          $customer->title = $request->title;
+          $customer->description= $request->description;
+          $customer->image= $request->image;
+          $customer->image= $request->image;
+          $customer->save();
         return response()->json($request);
     }
 
