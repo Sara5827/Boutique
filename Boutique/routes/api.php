@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('customers', 'CustomerController')->except(['create', 'edit']);
+Route::post('/register', 'Api/AuthController@register');
