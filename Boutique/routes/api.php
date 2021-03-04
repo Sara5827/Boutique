@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::delete('/testdelete/{id}', 'CustomerController@destroy');
+Route::get('/teststore', 'CustomerController@store');
+Route::get('/products/{id}', 'CustomerController@show');
 Route::resource('customers', 'CustomerController')->except(['create', 'edit']);
 
 Route::post('/register', 'AuthController@register');
